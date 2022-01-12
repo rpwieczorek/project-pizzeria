@@ -471,24 +471,28 @@
       const thisCart = this;
 
       const deliveryFee = settings.cart.defaultDeliveryFee;
+      //set variables to 0
       thisCart.totalNumber = 0;
       thisCart.subtotalPrice = 0;
       thisCart.totalPrice = 0;
-      thisCart.dom.deliveryFee.innerHTML = 0;
 
       for (let product of thisCart.products){
         thisCart.totalNumber += product.amount;
         thisCart.subtotalPrice += product.price;
-        //console.log(product)
       }
+
+      // update DOM and calculating totalPrice if something is in the cart
       if (thisCart.subtotalPrice !== 0) {
         thisCart.totalPrice = thisCart.subtotalPrice + deliveryFee;
         thisCart.dom.deliveryFee.innerHTML = deliveryFee;
       }
-      thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
+      else {
+        thisCart.dom.deliveryFee.innerHTML = 0; //set deliveryFee.innerHTML to zero in case there is no product in the cart
+      }
       for(let totalPriceWrapper of thisCart.dom.totalPrice){
         totalPriceWrapper.innerHTML = thisCart.totalPrice;
       }
+      thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
       thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
     }
   }
