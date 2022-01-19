@@ -42,9 +42,14 @@ export const select = {
   booking: {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
+    floorPlan: '.floor-plan',
     tables: '.floor-plan .table',
     tableId: 'data-table',
     tablePicked: '.picked',
+    bookingForm: '.booking-form',
+    phone: '[name="phone"]',
+    address: '[name="address"]',
+    starters: '[name="starter"]',
   },
   nav: {
     links: '.main-nav a',
