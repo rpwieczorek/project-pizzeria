@@ -11,6 +11,7 @@ class Booking{
     thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
+    thisBooking.pickTable();
   }
 
   getData(){
@@ -94,6 +95,7 @@ class Booking{
     // console.log(thisBooking.booked);
     thisBooking.updateDOM();
   }
+
   makeBooked(date, hour, duration, table){
     const thisBooking = this;
 
@@ -157,8 +159,37 @@ class Booking{
     thisBooking.dom.hoursAmount = document.querySelector(select.booking.hoursAmount);
     thisBooking.dom.datePicker = document.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = document.querySelector(select.widgets.hourPicker.wrapper);
-  
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+  }
+
+  resetPickedTable(){
+    const thisBooking = this;
+
+    const pickedTable = thisBooking.dom.wrapper.querySelector(select.booking.tablePicked);
+    if (pickedTable !== null){
+      pickedTable.classList.remove(classNames.booking.tablePicked);
+    }
+  }
+  
+  pickTable(){
+    const thisBooking = this;
+
+    //eventListener to find picked table which is unbooked
+    thisBooking.dom.wrapper.addEventListener('click',function(event){
+      event.preventDefault();
+      if (event.target.classList.contains(classNames.booking.table)
+        && !event.target.classList.contains(classNames.booking.tableBooked)
+      ){
+        if (event.target.classList.contains(classNames.booking.tablePicked)){
+          thisBooking.resetPickedTable();
+          thisBooking.pickedTable = null;
+        } else{
+          thisBooking.resetPickedTable();
+          thisBooking.pickedTable = event.target.getAttribute(select.booking.tableId);    
+          event.target.classList.add(classNames.booking.tablePicked);
+        }
+      }
+    });
   }
 
   initWidgets(){
@@ -166,19 +197,19 @@ class Booking{
 
     thisBooking.peopleAmount = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.dom.peopleAmount.addEventListener('updated',function(){
-      console.log('peopleAmount widget was clicked');
+      //console.log('peopleAmount widget was clicked');
     });
     thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
     thisBooking.dom.hoursAmount.addEventListener('updated',function(){
-      console.log('hoursAmount widget was clicked');
+      //console.log('hoursAmount widget was clicked');
     });
     thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
     thisBooking.dom.hourPicker.addEventListener('updated',function(){
-      console.log('hourPicker widget was clicked');
+      thisBooking.resetPickedTable();
     });
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
     thisBooking.dom.datePicker.addEventListener('updated',function(){
-      console.log('datePicker widget was clicked');
+      thisBooking.resetPickedTable();
     });    
     
     thisBooking.dom.wrapper.addEventListener('updated',function(){
