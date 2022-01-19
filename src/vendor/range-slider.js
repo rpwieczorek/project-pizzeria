@@ -1256,4 +1256,3 @@ var between = exports.between = function between(pos, min, max) {
 
 /******/ });
 });
-//# sourceMappingURL=range-slider.js.map
