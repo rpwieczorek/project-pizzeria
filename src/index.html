@@ -21,6 +21,7 @@
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
+            <a href="#homepage">Home</a>
             <a href="#order">Order</a>
             <a href="#booking">Booking</a>
         </div>
@@ -62,6 +63,9 @@
   </header>
 
   <div id="pages">
+    <section id="homepage">
+      <div class="home-page container"></div>
+    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -69,6 +73,78 @@
       <div class="booking-wrapper container"></div>
     </section>
   </div>
+
+  <script id="template-homepage" type="text/x-handlebars-template">
+    <div>
+      <div class="links-wrapper">
+        <div class="link-box">
+          <a href="#order"><img src="./images/homepage/pizza-1.jpg" alt="order">
+          <h2 class="no-spacing">ODRER ONLINE</h2>
+          <p class="">Delicious food delivered to your door</p></a>
+        </div>
+        <div class="link-box">
+          <a href="#order"><img src="./images/homepage/pizza-2.jpg" alt="booking">
+          <h2 class="no-spacing">BOOK A TABLE</h2>
+          <p class="">Spend a great time with us!</p></a>
+        </div>
+      </div>
+      <div class="links-wrapper">
+        <div class="link-box opening-hours">
+          <h2 class="no-spacing">OPENING HOURS</h2>
+          <p class="">TUE-SUN, 12PM-12AM</p>
+        </div>
+      </div>
+      
+      <div class="carousel">
+
+      </div>
+
+      <div class="gallery">
+        <div class="gallery-image">
+          <img src="./images/homepage/pizza-3.jpg" alt="image">
+          <span>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-share-alt"></i>
+          </span>
+        </div>
+        <div class="gallery-image">
+          <img src="./images/homepage/pizza-4.jpg" alt="image">
+          <span>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-share-alt"></i>
+          </span>
+        </div>
+        <div class="gallery-image">
+          <img src="./images/homepage/pizza-5.jpg" alt="image">
+          <span>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-share-alt"></i>
+          </span>
+        </div>
+        <div class="gallery-image">
+          <img src="./images/homepage/pizza-6.jpg" alt="image">
+          <span>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-share-alt"></i>
+          </span>
+        </div>
+        <div class="gallery-image">
+          <img src="./images/homepage/pizza-7.jpg" alt="image">
+          <span>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-share-alt"></i>
+          </span>
+        </div>
+        <div class="gallery-image">
+          <img src="./images/homepage/pizza-8.jpg" alt="image">
+          <span>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-share-alt"></i>
+          </span>
+        </div>
+      </div>    
+    </div>  
+  </script>
 
   <script id="template-booking-widget" type="text/x-handlebars-template">
   <div class="booking-widget">
