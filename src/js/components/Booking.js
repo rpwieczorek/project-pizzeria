@@ -134,11 +134,10 @@ class Booking{
         tableId = parseInt(tableId);
       }
 
-      if(
-        !allAvailable
+      if(!allAvailable
         &&
         thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId)
-      ){
+      ) {
         table.classList.add(classNames.booking.tableBooked);
       } else {
         table.classList.remove(classNames.booking.tableBooked);
@@ -199,7 +198,7 @@ class Booking{
 
   sendBooking(){
     const thisBooking = this;
-
+    
     const url = settings.db.url + '/' + settings.db.bookings;
     const payload = {
       date: thisBooking.date,
@@ -211,7 +210,7 @@ class Booking{
       phone: thisBooking.dom.phone.value,
       address: thisBooking.dom.address.value,
     };
-
+    
     for(let starter of thisBooking.dom.starters) {
       if(starter.checked){
         payload.starters.push(starter.value);
@@ -226,10 +225,7 @@ class Booking{
       body: JSON.stringify(payload)
     };
 
-    fetch(url, options);
-    thisBooking.makeBooked(payload.date, payload.hour, payload.duration, payload.table);
-    // thisBooking.updateDOM();
-    // console.log(payload);
+    fetch(url, options).then(thisBooking.makeBooked(payload.date, payload.hour, payload.duration, payload.table));
   }
 
   initWidgets(){
