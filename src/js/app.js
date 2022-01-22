@@ -24,6 +24,10 @@ const app = {
 
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
+    thisApp.linkBoxes = document.querySelectorAll(select.nav.linkBoxes);
+    
+    // console.log(typeof(thisApp.navLinks));
+    // console.log(thisApp.navLinks);
 
     const idFromHash = window.location.hash.replace('#/','');
     let pageMatchingHash = thisApp.pages[0].id;
@@ -37,7 +41,15 @@ const app = {
 
     thisApp.activatePage(pageMatchingHash);
 
-    for(let link of thisApp.navLinks){
+    thisApp.addListenersToLinks(thisApp.navLinks);
+    thisApp.addListenersToLinks(thisApp.linkBoxes);
+    
+  },
+
+  addListenersToLinks: function(groupOfLinks){
+    const thisApp = this;
+
+    for(let link of groupOfLinks){
       link.addEventListener('click', function(event){
         const clickedElement = this;
         event.preventDefault();
@@ -49,10 +61,8 @@ const app = {
 
         /* change url hash*/
         window.location.hash = '#/' + id;
-
       });
     }
-
   },
 
   activatePage: function(pageId){
@@ -120,9 +130,9 @@ const app = {
 
     thisApp.initData();
     thisApp.initCart();
-    thisApp.initPages();
-    thisApp.initBooking();
     thisApp.initHome();
+    thisApp.initBooking();
+    thisApp.initPages();   
   },
 };
 

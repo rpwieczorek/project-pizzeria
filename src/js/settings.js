@@ -55,6 +55,7 @@ export const select = {
   },
   nav: {
     links: '.main-nav a',
+    linkBoxes: '.link-box a',
   },
   cart: {
     productList: '.cart__order-summary',
@@ -73,6 +74,9 @@ export const select = {
     price: '.cart__product-price',
     edit: '[href="#edit"]',
     remove: '[href="#remove"]',
+  },
+  home: {
+    carousel: '.main-carousel',
   },
 };
 
