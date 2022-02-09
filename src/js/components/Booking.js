@@ -225,7 +225,11 @@ class Booking{
       body: JSON.stringify(payload)
     };
 
-    fetch(url, options).then(thisBooking.makeBooked(payload.date, payload.hour, payload.duration, payload.table));
+    fetch(url, options).then(
+      function(){
+        thisBooking.makeBooked(payload.date, payload.hour, payload.duration, payload.table);
+      }
+    );
   }
 
   initWidgets(){
