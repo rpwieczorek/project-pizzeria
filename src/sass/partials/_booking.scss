@@ -154,7 +154,10 @@
       &::after {
         border-radius: 50%;
       }
+    }
 
+    &.picked {
+      background: $color-success;
     }
 
     &.booked {
