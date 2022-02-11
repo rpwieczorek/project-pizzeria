@@ -1,3 +1,1 @@
-version 2.4
-on branch main
-whatever
+https://pizzeria-rw.herokuapp.com/
