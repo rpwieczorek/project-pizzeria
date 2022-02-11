@@ -32,6 +32,11 @@ class AmountWidget extends BaseWidget{
     thisWidget.dom.input.value = thisWidget.value;
   }
 
+  getValue(){
+    const thisWidget = this;
+    return thisWidget.value;
+  }
+
   initActions(){
     const thisWidget = this;
 

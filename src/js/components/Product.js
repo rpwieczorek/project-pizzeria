@@ -131,7 +131,7 @@ class Product{
     }
     thisProduct.priceSingle = price;
     // multiply price by amount
-    price *= thisProduct.amountWidget.value;
+    price *= thisProduct.amountWidget.getValue();
     // update calculated price in the HTML
     thisProduct.priceElem.innerHTML = price;
   }
